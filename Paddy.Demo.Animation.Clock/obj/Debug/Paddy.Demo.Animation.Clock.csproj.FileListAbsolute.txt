@@ -1,0 +1,11 @@
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\bin\Debug\Paddy.Demo.Animation.Clock.exe.config
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\bin\Debug\Paddy.Demo.Animation.Clock.exe
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\bin\Debug\Paddy.Demo.Animation.Clock.pdb
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.csproj.AssemblyReference.cache
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.Properties.Resources.resources
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.UserControlClock.resources
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.csproj.GenerateResource.cache
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.csproj.CoreCompileInputs.cache
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.exe
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.pdb
+E:\Paddy\C#\练习Demo\Paddy.Demo\Paddy.Demo.Animation.Clock\obj\Debug\Paddy.Demo.Animation.Clock.Form1.resources

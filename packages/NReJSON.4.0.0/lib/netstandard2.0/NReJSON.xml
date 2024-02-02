@@ -1,0 +1,1181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NReJSON</name>
+    </assembly>
+    <members>
+        <member name="T:NReJSON.DatabaseExtensions">
+            <summary>
+            This class defines the extension methods for StackExchange.Redis that allow
+            for the interaction with the RedisJson Redis module.
+            </summary>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonDelete(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.DEL`
+            
+            Delete a value.
+            
+            Non-existing keys and paths are ignored. Deleting an object's root is equivalent to deleting the key from Redis.
+            
+            https://oss.redislabs.com/rejson/commands/#jsondel
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="path">Defaults to root if not provided.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the number of paths deleted (0 or more).</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGet(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` in JSON serialized form.
+            
+            `NOESCAPE` is `true` by default.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <returns>Array of bulk strings.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGet``1(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` as a deserialized value.
+            
+            `NOESCAPE` is `true` by default.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGet(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.Boolean,System.String,System.String,System.String,StackExchange.Redis.CommandFlags,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` in JSON serialized form.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="noEscape">This option will disable the sending of \uXXXX escapes for non-ascii characters. This option should be used for efficiency if you deal mainly with such text.</param>
+            <param name="indent">Sets the indentation string for nested levels</param>
+            <param name="newline">Sets the string that's printed at the end of each line</param>
+            <param name="space">Sets the string that's put between a key and a value</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGet``1(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.Boolean,System.String,System.String,System.String,StackExchange.Redis.CommandFlags,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` as a deserialized value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="noEscape">This option will disable the sending of \uXXXX escapes for non-ascii characters. This option should be used for efficiency if you deal mainly with such text.</param>
+            <param name="indent">Sets the indentation string for nested levels</param>
+            <param name="newline">Sets the string that's printed at the end of each line</param>
+            <param name="space">Sets the string that's put between a key and a value</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGet(StackExchange.Redis.IDatabase,System.String[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns the values at `path` from multiple `key`s. Non-existing keys and non-existing paths are reported as null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of Bulk Strings, specifically the JSON serialization of the value at each key's path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGet(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns the values at `path` from multiple `key`s. Non-existing keys and non-existing paths are reported as null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of Bulk Strings, specifically the JSON serialization of the value at each key's path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGet``1(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns an IEnumerable of the specified result type. Non-existing keys and non-existent paths are returnd as type default.
+             
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns>IEnumerable of TResult, non-existent paths/keys are returned as default(TResult).</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonSet(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.String,NReJSON.SetOption,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.SET`
+            
+            Sets the JSON value at path in key
+            
+            For new Redis keys the path must be the root. 
+            
+            For existing keys, when the entire path exists, the value that it contains is replaced with the json value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonset
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is to be stored.</param>
+            <param name="json">The JSON object which you want to persist.</param>
+            <param name="path">The path which you want to persist the JSON object. For new objects this must be root.</param>
+            <param name="setOption">By default the object will be overwritten, but you can specify that the object be set only if it doesn't already exist or to set only IF it exists.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>An `OperationResult` indicating success or failure.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonSet``1(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,``0,System.String,NReJSON.SetOption,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.SET`
+            
+            Sets the JSON value at path in key
+            
+            For new Redis keys the path must be the root. 
+            
+            For existing keys, when the entire path exists, the value that it contains is replaced with the json value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonset
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is to be stored.</param>
+            <param name="obj">The object to serialize and send.</param>
+            <param name="path">The path which you want to persist the JSON object. For new objects this must be root.</param>
+            <param name="setOption">By default the object will be overwritten, but you can specify that the object be set only if it doesn't already exist or to set only IF it exists.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <typeparam name="TObjectType">Type of the object being serialized.</typeparam>
+            <returns>An `OperationResult` indicating success or failure.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonType(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.TYPE`
+            
+            Report the type of JSON value at `path`.
+            
+            `path` defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsontype
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need the type of.</param>
+            <param name="path">The path of the JSON object you want the type of. This defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonIncrementNumber(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Double,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.NUMINCRBY`
+            
+            Increments the number value stored at `path` by `number`.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonnumincrby
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which contains the number value you want to increment.</param>
+            <param name="path">The path of the JSON value you want to increment.</param>
+            <param name="number">The value you want to increment by.</param>
+            <param name="commandFlags">Optional command flags.</param>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiplyNumber(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Double,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.NUMMULTBY`
+            
+            Multiplies the number value stored at `path` by `number`.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonnummultby
+            </summary>
+            <param name="db"></param>
+            <param name="key">They key of the JSON object which contains the number value you want to multiply.</param>
+            <param name="path">The path of the JSON value you want to multiply.</param>
+            <param name="number">The value you want to multiply by.</param>
+            <param name="commandFlags">Optional command flags.</param>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonAppendJsonString(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.STRAPPEND`
+            
+            Append the json-string value(s) the string at path.
+            path defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonstrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need to append a string value.</param>
+            <param name="path">The path of the JSON string you want to append do.  This defaults to root.</param>
+            <param name="jsonString">JSON formatted string.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Length of the new JSON string.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonStringLength(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.STRLEN`
+            
+            Report the length of the JSON String at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonstrlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need string length information about.</param>
+            <param name="path">The path of the JSON string you want the length of. This defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the string's length.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayAppend(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Object[])">
+            <summary>
+            `JSON.ARRAPPEND`
+            
+            Append the `json` value(s) into the array at `path` after the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to append to.</param>
+            <param name="path">The path to the JSON array you want to append to.</param>
+            <param name="json">The JSON values that you want to append.</param>
+            <returns>Array of nullable integers indicating the array's new size at each matched path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayAppend(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags,System.Object[])">
+            <summary>
+            `JSON.ARRAPPEND`
+            
+            Append the `json` value(s) into the array at `path` after the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to append to.</param>
+            <param name="path">The path to the JSON array you want to append to.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="json">The JSON values that you want to append.</param>
+            <returns>Array of nullable integers indicating the array's new size at each matched path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayIndexOf(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Object,System.Int32,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRINDEX`
+            
+            Search for the first occurrence of a scalar JSON value in an array.
+            
+            The optional inclusive `start`(default 0) and exclusive `stop`(default 0, meaning that the last element is included) specify a slice of the array to search.
+            
+            Note: out of range errors are treated by rounding the index to the array's start and end. An inverse index range (e.g. from 1 to 0) will return unfound.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrindex
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to check for a scalar value in.</param>
+            <param name="path">The path to the JSON array that you want to check.</param>
+            <param name="jsonScalar">The JSON object that you are looking for.</param>
+            <param name="start">Where to start searching, defaults to 0 (the beginning of the array).</param>
+            <param name="stop">Where to stop searching, defaults to 0 (the end of the array).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integers, specifically, for each JSON value matching the path, the first position     of the scalar value in the array, -1 if unfound in the array, or null if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayInsert(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Int32,System.Object[])">
+            <summary>
+            `JSON.ARRINSERT`
+            
+            Insert the `json` value(s) into the array at `path` before the `index` (shifts to the right).
+            
+            The index must be in the array's range. Inserting at `index` 0 prepends to the array. Negative index values are interpreted as starting from the end.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrinsert
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to insert an object into.</param>
+            <param name="path">The path of the JSON array that you want to insert into.</param>
+            <param name="index">The index at which you want to insert, 0 prepends and negative values are interpreted as starting from the end.</param>
+            <param name="json">The object that you want to insert.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayInsert(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags,System.Object[])">
+            <summary>
+            `JSON.ARRINSERT`
+            
+            Insert the `json` value(s) into the array at `path` before the `index` (shifts to the right).
+            
+            The index must be in the array's range. Inserting at `index` 0 prepends to the array. Negative index values are interpreted as starting from the end.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrinsert
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to insert an object into.</param>
+            <param name="path">The path of the JSON array that you want to insert into.</param>
+            <param name="index">The index at which you want to insert, 0 prepends and negative values are interpreted as starting from the end.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="json">The object that you want to insert.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayLength(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRLEN`
+            
+            Report the length of the JSON Array at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want the length of.</param>
+            <param name="path">The path to the JSON array that you want the length of.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's length, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayPop(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRPOP`
+            
+            Remove and return element from the index in the array.
+            
+            Out of range indices are rounded to their respective array ends.Popping an empty array yields null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrpop
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to pop an object off of.</param>
+            <param name="path">Defaults to root (".") if not provided.</param>
+            <param name="index">Is the position in the array to start popping from (defaults to -1, meaning the last element).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of strings, specifically, for each path, the popped JSON value, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayPop``1(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRPOP`
+            
+            Remove and return element from the index in the array.
+            
+            Out of range indices are rounded to their respective array ends.Popping an empty array yields null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrpop
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to pop an object off of.</param>
+            <param name="path">Defaults to root (".") if not provided.</param>
+            <param name="index">Is the position in the array to start popping from (defaults to -1, meaning the last element).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns>Array of `TResult`, specifically, for each path, the popped JSON value, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayTrim(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,System.Int32,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRTRIM`
+            
+            Trim an array so that it contains only the specified inclusive range of elements.
+            
+            This command is extremely forgiving and using it with out of range indexes will not produce an error. 
+            
+            If start is larger than the array's size or start > stop, the result will be an empty array. 
+            
+            If start is &lt; 0 then it will be treated as 0. 
+            
+            If stop is larger than the end of the array, it will be treated like the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrtrim
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to trim.</param>
+            <param name="path">The path of the JSON array that you want to trim.</param>
+            <param name="start">The inclusive start index.</param>
+            <param name="stop">The inclusive stop index.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integer, specifically for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonObjectKeys(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.OBJKEYS`
+            
+            Return the keys in the object that's referenced by `path`.
+            
+            `path` defaults to root if not provided.If the object is empty, or either `key` or `path` do not exist, then null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonobjkeys
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which you want to enumerate keys for.</param>
+            <param name="path">The path to the JSON object you want the keys for, this defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array, specifically the key names in the object as Bulk Strings.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonObjectLength(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.OBJLEN`
+            
+            Report the number of keys in the JSON Object at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonobjlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which you want the length of.</param>
+            <param name="path">The path to the JSON object which you want the length of, defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the number of keys in the object.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonDebugMemory(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.DEBUG MEMORY`
+            
+            Report the memory usage in bytes of a value. `path` defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsondebug
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that you want to determine the memory usage of.</param>
+            <param name="path">The path to JSON object you want to check, this defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the size in bytes of the value</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetResp(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.RESP`
+            
+            This command uses the following mapping from JSON to RESP: 
+            
+                - JSON Null is mapped to the RESP Null Bulk String 
+                
+                - JSON `false` and `true` values are mapped to the respective RESP Simple Strings 
+                
+                - JSON Numbers are mapped to RESP Integers or RESP Bulk Strings, depending on type 
+                
+                - JSON Strings are mapped to RESP Bulk Strings 
+                
+                - JSON Arrays are represented as RESP Arrays in which the first element is the simple string `[` followed by the array's elements 
+                
+                - JSON Objects are represented as RESP Arrays in which the first element is the simple string `{`. Each successive entry represents a key-value pair as a two-entries array of bulk strings.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonresp
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that you want an RESP result for.</param>
+            <param name="path">Defaults to root if not provided. </param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array, specifically the JSON's RESP form as detailed.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonToggle(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.TOGGLE`
+            
+            Toggle the boolean property of a JSON object.
+            
+            Official documentation forthcoming.
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the property that you'd like to toggle.</param>
+            <param name="path">The path to the boolean property on JSON object that you'd like to toggle.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonClear(StackExchange.Redis.IDatabase,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.CLEAR`
+            
+            Clear/empty arrays and objects (to have zero slots/keys without deleting the array/object) returning the count 
+            of cleared paths (ignoring non-array and non-objects paths).
+            
+            Official documentation forthcoming.
+            </summary>
+            <param name="db"></param>
+            <param name="key"></param>
+            <param name="path"></param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonDeleteAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.DEL`
+            
+            Delete a value.
+            
+            Non-existing keys and paths are ignored. Deleting an object's root is equivalent to deleting the key from Redis.
+            
+            https://oss.redislabs.com/rejson/commands/#jsondel
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="path">Defaults to root if not provided.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the number of paths deleted (0 or more).</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` in JSON serialized form.
+            
+            `NOESCAPE` is `true` by default.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetAsync``1(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` as a deserialized value.
+            
+            `NOESCAPE` is `true` by default.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.Boolean,System.String,System.String,System.String,StackExchange.Redis.CommandFlags,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` in JSON serialized form.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="noEscape">This option will disable the sending of \uXXXX escapes for non-ascii characters. This option should be used for efficiency if you deal mainly with such text.</param>
+            <param name="indent">Sets the indentation string for nested levels</param>
+            <param name="newline">Sets the string that's printed at the end of each line</param>
+            <param name="space">Sets the string that's put between a key and a value</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetAsync``1(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.Boolean,System.String,System.String,System.String,StackExchange.Redis.CommandFlags,System.String[])">
+            <summary>
+            `JSON.GET`
+            
+            Return the value at `path` as a deserialized value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonget
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is stored.</param>
+            <param name="noEscape">This option will disable the sending of \uXXXX escapes for non-ascii characters. This option should be used for efficiency if you deal mainly with such text.</param>
+            <param name="indent">Sets the indentation string for nested levels</param>
+            <param name="newline">Sets the string that's printed at the end of each line</param>
+            <param name="space">Sets the string that's put between a key and a value</param>
+            <param name="commandFlags"></param>
+            <param name="paths">The path(s) of the JSON properties that you want to return. By default, the entire JSON object will be returned.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGetAsync(StackExchange.Redis.IDatabaseAsync,System.String[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns the values at `path` from multiple `key`s. Non-existing keys and non-existing paths are reported as null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of Bulk Strings, specifically the JSON serialization of the value at each key's path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGetAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns the values at `path` from multiple `key`s. Non-existing keys and non-existing paths are reported as null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of Bulk Strings, specifically the JSON serialization of the value at each key's path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiGetAsync``1(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey[],System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.MGET`
+            
+            Returns an IEnumerable of the specified result type. Non-existing keys and non-existent paths are returnd as type default.
+             
+            https://oss.redislabs.com/rejson/commands/#jsonmget
+            </summary>
+            <param name="db"></param>
+            <param name="keys">Keys where JSON objects are stored.</param>
+            <param name="path">The path of the JSON property that you want to return for each key. This is "root" by default.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns>IEnumerable of TResult, non-existent paths/keys are returned as default(TResult).</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonSetAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.String,NReJSON.SetOption,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.SET`
+            
+            Sets the JSON value at path in key
+            
+            For new Redis keys the path must be the root. 
+            
+            For existing keys, when the entire path exists, the value that it contains is replaced with the json value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonset
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is to be stored.</param>
+            <param name="json">The JSON object which you want to persist.</param>
+            <param name="path">The path which you want to persist the JSON object. For new objects this must be root.</param>
+            <param name="setOption">By default the object will be overwritten, but you can specify that the object be set only if it doesn't already exist or to set only IF it exists.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>An `OperationResult` indicating success or failure.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonSetAsync``1(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,``0,System.String,NReJSON.SetOption,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.SET`
+            
+            Sets the JSON value at path in key
+            
+            For new Redis keys the path must be the root. 
+            
+            For existing keys, when the entire path exists, the value that it contains is replaced with the json value.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonset
+            </summary>
+            <param name="db"></param>
+            <param name="key">Key where JSON object is to be stored.</param>
+            <param name="obj">The object to serialize and send.</param>
+            <param name="path">The path which you want to persist the JSON object. For new objects this must be root.</param>
+            <param name="setOption">By default the object will be overwritten, but you can specify that the object be set only if it doesn't already exist or to set only IF it exists.</param>
+            <param name="commandFlags"></param>
+            <typeparam name="TObjectType">Type of the object being serialized.</typeparam>
+            <returns>An `OperationResult` indicating success or failure.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonTypeAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.TYPE`
+            
+            Report the type of JSON value at `path`.
+            
+            `path` defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsontype
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need the type of.</param>
+            <param name="path">The path of the JSON object you want the type of. This defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonIncrementNumberAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Double,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.NUMINCRBY`
+            
+            Increments the number value stored at `path` by `number`.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonnumincrby
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which contains the number value you want to increment.</param>
+            <param name="path">The path of the JSON value you want to increment.</param>
+            <param name="number">The value you want to increment by.</param>
+            <param name="commandFlags">Optional command flags.</param>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonMultiplyNumberAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Double,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.NUMMULTBY`
+            
+            Multiplies the number value stored at `path` by `number`.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonnummultby
+            </summary>
+            <param name="db"></param>
+            <param name="key">They key of the JSON object which contains the number value you want to multiply.</param>
+            <param name="path">The path of the JSON value you want to multiply.</param>
+            <param name="number">The value you want to multiply by.</param>
+            <param name="commandFlags">Optional command flags.</param>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonAppendJsonStringAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.STRAPPEND`
+            
+            Append the json-string value(s) the string at path.
+            path defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonstrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need to append a string value.</param>
+            <param name="path">The path of the JSON string you want to append do. This defaults to root.</param>
+            <param name="jsonString">JSON formatted string.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Length of the new JSON string.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonStringLengthAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.STRLEN`
+            
+            Report the length of the JSON String at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonstrlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object you need string length information about.</param>
+            <param name="path">The path of the JSON string you want the length of. This defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the string's length.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayAppendAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Object[])">
+            <summary>
+            `JSON.ARRAPPEND`
+            
+            Append the `json` value(s) into the array at `path` after the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to append to.</param>
+            <param name="path">The path to the JSON array you want to append to.</param>
+            <param name="json">The JSON values that you want to append.</param>
+            <returns>Array of nullable integers indicating the array's new size at each matched path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayAppendAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags,System.Object[])">
+            <summary>
+            `JSON.ARRAPPEND`
+            
+            Append the `json` value(s) into the array at `path` after the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrappend
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to append to.</param>
+            <param name="path">The path to the JSON array you want to append to.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="json">The JSON values that you want to append.</param>
+            <returns>Array of nullable integers indicating the array's new size at each matched path.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayIndexOfAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Object,System.Int32,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRINDEX`
+            
+            Search for the first occurrence of a scalar JSON value in an array.
+            
+            The optional inclusive `start`(default 0) and exclusive `stop`(default 0, meaning that the last element is included) specify a slice of the array to search.
+            
+            Note: out of range errors are treated by rounding the index to the array's start and end. An inverse index range (e.g. from 1 to 0) will return unfound.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrindex
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to check for a scalar value in.</param>
+            <param name="path">The path to the JSON array that you want to check.</param>
+            <param name="jsonScalar">The JSON object that you are looking for.</param>
+            <param name="start">Where to start searching, defaults to 0 (the beginning of the array).</param>
+            <param name="stop">Where to stop searching, defaults to 0 (the end of the array).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integers, specifically, for each JSON value matching the path, the first position of the scalar value in the array, -1 if unfound in the array, or null if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayInsertAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Int32,System.Object[])">
+            <summary>
+            `JSON.ARRINSERT`
+            
+            Insert the `json` value(s) into the array at `path` before the `index` (shifts to the right).
+            
+            The index must be in the array's range. Inserting at `index` 0 prepends to the array. Negative index values are interpreted as starting from the end.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrinsert
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to insert an object into.</param>
+            <param name="path">The path of the JSON array that you want to insert into.</param>
+            <param name="index">The index at which you want to insert, 0 prepends and negative values are interpreted as starting from the end.</param>
+            <param name="json">The object that you want to insert.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayInsertAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags,System.Object[])">
+            <summary>
+            `JSON.ARRINSERT`
+            
+            Insert the `json` value(s) into the array at `path` before the `index` (shifts to the right).
+            
+            The index must be in the array's range. Inserting at `index` 0 prepends to the array. Negative index values are interpreted as starting from the end.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrinsert
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to insert an object into.</param>
+            <param name="path">The path of the JSON array that you want to insert into.</param>
+            <param name="index">The index at which you want to insert, 0 prepends and negative values are interpreted as starting from the end.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <param name="json">The object that you want to insert.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayLengthAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRLEN`
+            
+            Report the length of the JSON Array at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want the length of.</param>
+            <param name="path">The path to the JSON array that you want the length of.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integer, specifically, for each path, the array's length, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayPopAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRPOP`
+            
+            Remove and return element from the index in the array.
+            
+            Out of range indices are rounded to their respective array ends.Popping an empty array yields null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrpop
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to pop an object off of.</param>
+            <param name="path">Defaults to root (".") if not provided.</param>
+            <param name="index">Is the position in the array to start popping from (defaults to -1, meaning the last element).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of strings, specifically, for each path, the popped JSON value, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayPopAsync``1(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRPOP`
+            
+            Remove and return element from the index in the array.
+            
+            Out of range indices are rounded to their respective array ends.Popping an empty array yields null.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrpop
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to pop an object off of.</param>
+            <param name="path">Defaults to root (".") if not provided.</param>
+            <param name="index">Is the position in the array to start popping from (defaults to -1, meaning the last element).</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <typeparam name="TResult">The type to deserialize the value as.</typeparam>
+            <returns>Array of `TResult`, specifically, for each path, the popped JSON value, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonArrayTrimAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,System.Int32,System.Int32,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.ARRTRIM`
+            
+            Trim an array so that it contains only the specified inclusive range of elements.
+            
+            This command is extremely forgiving and using it with out of range indexes will not produce an error. 
+            
+            If start is larger than the array's size or start > stop, the result will be an empty array. 
+            
+            If start is &lt; 0 then it will be treated as 0. 
+            
+            If stop is larger than the end of the array, it will be treated like the last element in it.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonarrtrim
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the array you want to trim.</param>
+            <param name="path">The path of the JSON array that you want to trim.</param>
+            <param name="start">The inclusive start index.</param>
+            <param name="stop">The inclusive stop index.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array of nullable integer, specifically for each path, the array's new size, or null element if the matching JSON value is not an array.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonObjectKeysAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.OBJKEYS`
+            
+            Return the keys in the object that's referenced by `path`.
+            
+            `path` defaults to root if not provided.If the object is empty, or either `key` or `path` do not exist, then null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonobjkeys
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which you want to enumerate keys for.</param>
+            <param name="path">The path to the JSON object you want the keys for, this defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array, specifically the key names in the object as Bulk Strings.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonObjectLengthAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.OBJLEN`
+            
+            Report the number of keys in the JSON Object at `path` in `key`.
+            
+            `path` defaults to root if not provided. If the `key` or `path` do not exist, null is returned.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonobjlen
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object which you want the length of.</param>
+            <param name="path">The path to the JSON object which you want the length of, defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the number of keys in the object.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonDebugMemoryAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.DEBUG MEMORY`
+            
+            Report the memory usage in bytes of a value. `path` defaults to root if not provided.
+            
+            https://oss.redislabs.com/rejson/commands/#jsondebug
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that you want to determine the memory usage of.</param>
+            <param name="path">The path to JSON object you want to check, this defaults to root.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Integer, specifically the size in bytes of the value</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonGetRespAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.RESP`
+            
+            This command uses the following mapping from JSON to RESP: 
+            
+                - JSON Null is mapped to the RESP Null Bulk String 
+                
+                - JSON `false` and `true` values are mapped to the respective RESP Simple Strings 
+                
+                - JSON Numbers are mapped to RESP Integers or RESP Bulk Strings, depending on type 
+                
+                - JSON Strings are mapped to RESP Bulk Strings 
+                
+                - JSON Arrays are represented as RESP Arrays in which the first element is the simple string `[` followed by the array's elements 
+                
+                - JSON Objects are represented as RESP Arrays in which the first element is the simple string `{`. Each successive entry represents a key-value pair as a two-entries array of bulk strings.
+            
+            https://oss.redislabs.com/rejson/commands/#jsonresp
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that you want an RESP result for.</param>
+            <param name="path">Defaults to root if not provided. </param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns>Array, specifically the JSON's RESP form as detailed.</returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonToggleAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.TOGGLE`
+            
+            Toggle the boolean property of a JSON object.
+            
+            Official documentation forthcoming.
+            </summary>
+            <param name="db"></param>
+            <param name="key">The key of the JSON object that contains the property that you'd like to toggle.</param>
+            <param name="path">The path to the boolean property on JSON object that you'd like to toggle.</param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.DatabaseExtensions.JsonClearAsync(StackExchange.Redis.IDatabaseAsync,StackExchange.Redis.RedisKey,System.String,StackExchange.Redis.CommandFlags)">
+            <summary>
+            `JSON.CLEAR`
+            
+            Clear/empty arrays and objects (to have zero slots/keys without deleting the array/object) returning the count 
+            of cleared paths (ignoring non-array and non-objects paths).
+            
+            Official documentation forthcoming.
+            </summary>
+            <param name="db"></param>
+            <param name="key"></param>
+            <param name="path"></param>
+            <param name="commandFlags">Optional command flags.</param>
+            <returns></returns>
+        </member>
+        <member name="T:NReJSON.IndexedCollection`1">
+            <summary>
+            This type was introduced specifically for the result of the JsonIndexGet(Async) methods.
+            
+            Since those methods return a dictionary of IEnumerables I figured it'd be nice if you 
+            had the option to iterate over all of the values without having to directly interact with
+            the dictionary, or access the underlying values by specifying the keys.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="P:NReJSON.IndexedCollection`1.Item(System.String)">
+            <summary>
+            Provides a way to access the underlying values by key (just like a regular dictionary).
+            </summary>
+        </member>
+        <member name="P:NReJSON.IndexedCollection`1.Keys">
+            <summary>
+            Provides a way to access the underlying keys in the wrapped dictionary.
+            </summary>
+        </member>
+        <member name="T:NReJSON.ISerializerProxy">
+            <summary>
+            Interface used to define a proxy to a JSON serializer.
+            </summary>
+        </member>
+        <member name="M:NReJSON.ISerializerProxy.Deserialize``1(StackExchange.Redis.RedisResult)">
+            <summary>
+            Proxy method for accessing the deserialization functionality of your chosen JSON deserializer.
+            </summary>
+            <param name="serializedValue">The JSON formatted value that is returned by Redis.</param>
+            <typeparam name="TResult">The desired result type.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.ISerializerProxy.Serialize``1(``0)">
+            <summary>
+            Proxy method for accessing the serialization functionality of your chosne JSON serializer.
+            </summary>
+            <param name="obj">Object to serialize.</param>
+            <typeparam name="TObjectType">Type of the object to serialize.</typeparam>
+            <returns>Serialization result as a string.</returns>
+        </member>
+        <member name="T:NReJSON.NReJSONException">
+            <summary>
+            NReJSONException is used to describe exceptions that occur within the NReJSON
+            library.null 
+            </summary>
+        </member>
+        <member name="M:NReJSON.NReJSONException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of NReJSONException with a simple message.
+            </summary>
+            <param name="message">The message that you want populated in the `Message` property of the exception.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.NReJSONException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of NReJSONException with a simple message and wrap another exception.
+            </summary>
+            <param name="message">The message that you want populated in the `Message` property of the exception.</param>
+            <param name="inner">The exception that you want to wrap.</param>
+            <returns></returns>
+        </member>
+        <member name="T:NReJSON.NReJSONSerializer">
+            <summary>
+            This static class serves as a container for storing a JSON serializer for use by NReJSON
+            when returning typed results from the RedisJson command.
+            </summary>
+        </member>
+        <member name="P:NReJSON.NReJSONSerializer.SerializerProxy">
+            <summary>
+            This is where you assign your implementation of the `ISerializerProxy` interface.
+            
+            This property is "write-once" meaning, that once it is set it cannot be reset.
+            
+            This property will throw an `NReJSONException` if you try to access it before it
+            is assigned.
+            </summary>
+            <value>An implementation of the ISerializerProxy that is appropriate for your application.</value>
+        </member>
+        <member name="T:NReJSON.OperationResult">
+            <summary>
+            This struct captures the result of an operation that returns either
+            `OK` or an error message.
+            
+            This struct is implicitly convertable to `bool`.
+            </summary>
+        </member>
+        <member name="P:NReJSON.OperationResult.IsSuccess">
+            <summary>
+            A boolean value indicating whether or not an operation succeeded.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:NReJSON.OperationResult.RawResult">
+            <summary>
+            The raw result of the operation will be stored here.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:NReJSON.OperationResult.#ctor(System.Boolean,System.String)">
+            <summary>
+            Construct the OperationResult.
+            </summary>
+            <param name="isSuccess">True, if the operation succeeded and false, if the operation didn't succeed.</param>
+            <param name="rawResult">The result as handled by NReJSON.</param>
+        </member>
+        <member name="M:NReJSON.OperationResult.op_Implicit(NReJSON.OperationResult)~System.Boolean">
+            <summary>
+            Provides the ability to implicitly convert the `OperationalResult` to a boolean.
+            </summary>
+            <param name="operationResult"></param>
+        </member>
+        <member name="T:NReJSON.PathedResult`1">
+            <summary>
+            Encapsulates the result of a "pathed" operation such as JsonGet(Async) which can return multiple results based
+            on whatever path was provided. 
+            </summary>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="P:NReJSON.PathedResult`1.InnerResult">
+            <summary>
+            The original unparsed result that came back from Redis.
+            </summary>
+        </member>
+        <member name="M:NReJSON.PathedResult`1.op_Implicit(NReJSON.PathedResult{`0})~`0">
+            <summary>
+            Implicit conversion to a single instance of `TResult` for convenience. 
+            </summary>
+            <param name="pathedResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NReJSON.PathedResult`1.GetEnumerator">
+            <summary>
+            Returns the enumerator that will attempt to parse the RedisResult into multiple results.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NReJSON.SetOption">
+            <summary>
+            An enumeration that captures the available options for setting values.
+            </summary>
+        </member>
+        <member name="F:NReJSON.SetOption.Default">
+            <summary>
+            Set the value not matter what.    
+            </summary>
+        </member>
+        <member name="F:NReJSON.SetOption.SetIfNotExists">
+            <summary>
+            Set the value only if it doesn't already exist.    
+            </summary>        
+        </member>
+        <member name="F:NReJSON.SetOption.SetOnlyIfExists">
+            <summary>
+            Set the value only if it already exists.    
+            </summary>        
+        </member>
+    </members>
+</doc>
