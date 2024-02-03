@@ -1,0 +1,93 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>8f85a470-bac2-49b5-bd3e-10eba3b9d206</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Paddy.Demo.Python.JD_Sckill</Name>
+    <RootNamespace>Paddy.Demo.Python.JD_Sckill</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="jd_seckill\" />
+    <Folder Include="jd_seckill\.git\" />
+    <Folder Include="jd_seckill\.git\hooks\" />
+    <Folder Include="jd_seckill\.git\info\" />
+    <Folder Include="jd_seckill\.git\logs\" />
+    <Folder Include="jd_seckill\.git\logs\refs\" />
+    <Folder Include="jd_seckill\.git\logs\refs\heads\" />
+    <Folder Include="jd_seckill\.git\logs\refs\remotes\" />
+    <Folder Include="jd_seckill\.git\logs\refs\remotes\origin\" />
+    <Folder Include="jd_seckill\.git\objects\" />
+    <Folder Include="jd_seckill\.git\objects\info\" />
+    <Folder Include="jd_seckill\.git\objects\pack\" />
+    <Folder Include="jd_seckill\.git\refs\" />
+    <Folder Include="jd_seckill\.git\refs\heads\" />
+    <Folder Include="jd_seckill\.git\refs\remotes\" />
+    <Folder Include="jd_seckill\.git\refs\remotes\origin\" />
+    <Folder Include="jd_seckill\.git\refs\tags\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="jd_seckill\.git\config" />
+    <Content Include="jd_seckill\.git\description" />
+    <Content Include="jd_seckill\.git\HEAD" />
+    <Content Include="jd_seckill\.git\hooks\applypatch-msg.sample" />
+    <Content Include="jd_seckill\.git\hooks\commit-msg.sample" />
+    <Content Include="jd_seckill\.git\hooks\fsmonitor-watchman.sample" />
+    <Content Include="jd_seckill\.git\hooks\post-update.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-applypatch.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-commit.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-merge-commit.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-push.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-rebase.sample" />
+    <Content Include="jd_seckill\.git\hooks\pre-receive.sample" />
+    <Content Include="jd_seckill\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="jd_seckill\.git\hooks\push-to-checkout.sample" />
+    <Content Include="jd_seckill\.git\hooks\sendemail-validate.sample" />
+    <Content Include="jd_seckill\.git\hooks\update.sample" />
+    <Content Include="jd_seckill\.git\index" />
+    <Content Include="jd_seckill\.git\info\exclude" />
+    <Content Include="jd_seckill\.git\logs\HEAD" />
+    <Content Include="jd_seckill\.git\logs\refs\heads\master" />
+    <Content Include="jd_seckill\.git\logs\refs\remotes\origin\HEAD" />
+    <Content Include="jd_seckill\.git\objects\pack\pack-f1b2111b1dbf1ab3e01d121a3469497f3d51565a.idx" />
+    <Content Include="jd_seckill\.git\objects\pack\pack-f1b2111b1dbf1ab3e01d121a3469497f3d51565a.pack" />
+    <Content Include="jd_seckill\.git\objects\pack\pack-f1b2111b1dbf1ab3e01d121a3469497f3d51565a.rev" />
+    <Content Include="jd_seckill\.git\packed-refs" />
+    <Content Include="jd_seckill\.git\refs\heads\master" />
+    <Content Include="jd_seckill\.git\refs\remotes\origin\HEAD" />
+    <Content Include="jd_seckill\config.ini" />
+    <Content Include="jd_seckill\README.md" />
+    <Content Include="jd_seckill\requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="jd_seckill\config.py" />
+    <Compile Include="jd_seckill\jd_logger.py" />
+    <Compile Include="jd_seckill\jd_spider_requests.py" />
+    <Compile Include="jd_seckill\main.py" />
+    <Compile Include="jd_seckill\timer.py" />
+    <Compile Include="jd_seckill\util.py" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

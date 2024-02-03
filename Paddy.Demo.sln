@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paddy.Demo.DB.Redis", "Padd
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Paddy.Demo.Python", "Paddy.Demo.Py.JsonTest\Paddy.Demo.Python.pyproj", "{5382DC2D-8EAC-4AFE-B0D6-1B783C4FC3E9}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Paddy.Demo.Python.JD_Sckill", "Paddy.Demo.Python.JD_Sckill\Paddy.Demo.Python.JD_Sckill.pyproj", "{8F85A470-BAC2-49B5-BD3E-10EBA3B9D206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,8 @@ Global
 		{421BA639-3A91-421B-9D34-EC6E8A03F1B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5382DC2D-8EAC-4AFE-B0D6-1B783C4FC3E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5382DC2D-8EAC-4AFE-B0D6-1B783C4FC3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F85A470-BAC2-49B5-BD3E-10EBA3B9D206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F85A470-BAC2-49B5-BD3E-10EBA3B9D206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

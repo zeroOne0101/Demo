@@ -16,5 +16,6 @@ namespace Paddy.Demo.Animation.Clock
         {
             InitializeComponent();
         }
+
     }
 }
